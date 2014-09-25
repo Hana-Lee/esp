@@ -12,9 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.eyeq.esp.service.StudyRoomManager;
 import com.eyeq.esp.service.UserManager;
+import com.eyeq.esp.system.config.SpringAppConfig;
+import com.eyeq.esp.system.config.SpringWebConfig;
 
 /**
  * @author Hana Lee
@@ -24,8 +28,10 @@ import com.eyeq.esp.service.UserManager;
  * @by $LastChangedBy: voyaging $
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/esp-test-context.xml" })
-@TransactionConfiguration(transactionManager = "txManager")
+@WebAppConfiguration
+@ContextConfiguration(classes = { SpringAppConfig.class, SpringWebConfig.class })
+@TransactionConfiguration
+@Transactional
 public class StudyRoomTest {
 
 	@Autowired
@@ -40,6 +46,7 @@ public class StudyRoomTest {
 		if (owner == null) {
 			owner = new User();
 			owner.setName("이하나");
+			owner.setUid("voyaging");
 			owner.setEmail("voyaging@naver.com");
 			owner.setPassword("dlgksk");
 			owner.setEnabled(true);
@@ -55,14 +62,14 @@ public class StudyRoomTest {
 		room.addMember(owner);
 
 		studyRoomManager.createStudyRoom(room);
-		
+
 		StudyRoom room2 = new StudyRoom();
 		room2.setName("TOGA 설치3");
 		room2.setStartDate(new Date());
 		room2.setEndDate(new Date());
 		room2.setEnabled(false);
 		room2.setOwner(owner);
-		
+
 		studyRoomManager.createStudyRoom(room2);
 
 		assertNotNull(room.getId());
@@ -87,7 +94,7 @@ public class StudyRoomTest {
 	public void testGetStudyRooms() {
 		User user = ownerManager.getUser("voyaging");
 		assertNotNull(user);
-		
+
 		List<StudyRoom> rooms = studyRoomManager.getStudyRooms(user);
 		for (StudyRoom room : rooms) {
 			assertNotNull(room.getName());
@@ -99,7 +106,7 @@ public class StudyRoomTest {
 	public void testGetStudyMember() {
 		User user = ownerManager.getUser("voyaging");
 		assertNotNull(user);
-		
+
 		List<StudyRoom> rooms = studyRoomManager.getStudyRooms();
 		for (StudyRoom room : rooms) {
 			assertNotNull(room.getName());

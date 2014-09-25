@@ -11,8 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.eyeq.esp.service.UserManager;
+import com.eyeq.esp.system.config.SpringAppConfig;
+import com.eyeq.esp.system.config.SpringWebConfig;
 
 /**
  * @author Hana Lee
@@ -22,8 +26,10 @@ import com.eyeq.esp.service.UserManager;
  * @by $LastChangedBy: voyaging $
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/esp-test-context.xml" })
-@TransactionConfiguration(transactionManager = "txManager")
+@WebAppConfiguration
+@ContextConfiguration(classes = { SpringAppConfig.class, SpringWebConfig.class })
+@TransactionConfiguration
+@Transactional
 public class UserManagerTest {
 
 	@Autowired

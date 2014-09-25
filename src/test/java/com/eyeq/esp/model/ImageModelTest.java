@@ -6,12 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.eyeq.esp.service.ImageManager;
+import com.eyeq.esp.system.config.SpringAppConfig;
+import com.eyeq.esp.system.config.SpringWebConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:/esp-context.xml" })
-@TransactionConfiguration(transactionManager = "txManager")
+@WebAppConfiguration
+@ContextConfiguration(classes = { SpringAppConfig.class, SpringWebConfig.class })
+@TransactionConfiguration
+@Transactional
 public class ImageModelTest {
 
 	@Autowired

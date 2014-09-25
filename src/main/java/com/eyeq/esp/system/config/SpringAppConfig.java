@@ -56,7 +56,7 @@ public class SpringAppConfig {
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://localhost/test");
 		dataSource.setUsername("root");
-		dataSource.setPassword("eyeq");
+		dataSource.setPassword("root");
 		return dataSource;
 	}
 

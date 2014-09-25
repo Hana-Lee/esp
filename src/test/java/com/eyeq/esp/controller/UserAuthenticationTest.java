@@ -1,6 +1,6 @@
 package com.eyeq.esp.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,8 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
@@ -42,10 +40,6 @@ public class UserAuthenticationTest {
 
 	@Autowired
 	private WebApplicationContext wac;
-
-	@Autowired
-	@Qualifier("authenticationManager")
-	private AuthenticationManager am;
 
 	private MockMvc mockMvc;
 

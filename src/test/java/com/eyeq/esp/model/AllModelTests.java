@@ -12,7 +12,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @by $LastChangedBy: voyaging $
  */
 @RunWith(Suite.class)
-@SuiteClasses({ UserManagerTest.class, StudyRoomTest.class })
+@SuiteClasses({ UserManagerTest.class, StudyRoomTest.class,
+		ImageModelTest.class, UserTest.class })
 public class AllModelTests {
 
 }
