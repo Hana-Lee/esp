@@ -19,6 +19,24 @@ EYEQMC Study Portal project
 
 ## 스크린샷
 
+## Version History
+
+0.0.1 : Start
+
+0.1.0 : Add LDAP login integration.
+
+0.1.1 : Study Registration 구현.
+
+0.2.0 : Add Google calendar
+
+0.2.2 : spring 3.0 이후 가능해진 java config 설정 구현 (xml 설정 대신)
+
+0.2.2 : web.xml 을 서블릿 3.0 의 스펙에 따라 spring framework(mvc) 의 도움을 받아  java 설정으로 변경.
+
+0.3.0 : 게시판 기능 추가.
+
+0.3.1 : 다음 지도를 이용한 스터디 장소 등록 기능 추가.
+
 Create by Hana Lee
 
 [blog](http://www.leehana.co.kr)
